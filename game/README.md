@@ -1,0 +1,1 @@
+This is a simple vanilla JavaScript game for DGMD E-28, Week 2. It contains a simple index.html file, a very simple styles.css file, and a script.js file that contains the programmatic logic for the game, "Rock-Paper-Scissors-Lizard-Spock." There is also an images directory that contains a single file, rpsls.png, which explains the rules of the game.
