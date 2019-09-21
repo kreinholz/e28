@@ -1,0 +1,19 @@
+.hidden {
+    display: none;
+}
+
+#matchResult {
+    display: none;
+}
+
+#won {
+    color: green;
+}
+
+#lost {
+    color: red;
+}
+
+[v-cloak] {
+    display: none;
+}

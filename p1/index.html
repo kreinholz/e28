@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <title>Rock, Paper, Scissors, Lizard, Spock</title>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href='styles.css'>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js' defer></script>
+    <script src='script.js' defer></script>
+</head>
+
+<body>
+    <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
+    <p>"Big Bang Theory" fans will recognize this game. For those who
+        don't, <a href="https://the-big-bang-theory.com/rock-paper-scissors-lizard-spock/" target=_blank>here's a
+            primer</a>.
+    </p>
+    <p>As a cheat sheet, here is a diagram of what beats what:</p>
+    <p><img src='images/rpsls.png' alt='Rock-Paper-Scissors-Lizard-Spock-Diagram'></p>
+    <p>Got it? Good. Let's play!</p>
+
+    <h2>Choose your attack!</h2>
+    <div id='app' v-cloak>
+        <p><label><input type='radio' value='rock' v-model='chosen'>💎 Rock</label></p>
+        <p><label><input type='radio' value='paper' v-model='chosen'>📰 Paper</label></p>
+        <p><label><input type='radio' value='scissors' v-model='chosen'>✂ Scissors</label></p>
+        <p><label><input type='radio' value='lizard' v-model='chosen'>🦎 Lizard</label></p>
+        <p><label><input type='radio' value='spock' v-model='chosen'>🖖 Spock</label></p>
+        <button v-on:click='playerAttack(chosen)'>Attack!</button>
+
+        <div id='matchResult'>
+            <h2>The computer chose:</h2>
+            <div id='rpslsCompChoice'></div>
+            <p></p>
+            <div id='won' class='hidden'>You won!</div>
+            <div id='lost' class='hidden'>You lost</div>
+            <div id='tie' class='hidden'>It's a draw!</div>
+        </div>
+    </div>
+</body>
+
+</html>
