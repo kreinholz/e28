@@ -1,11 +1,3 @@
-.hidden {
-    display: none;
-}
-
-#matchResult {
-    display: none;
-}
-
 #won {
     color: green;
 }

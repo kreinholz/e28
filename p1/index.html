@@ -21,20 +21,18 @@
 
     <h2>Choose your attack!</h2>
     <div id='app' v-cloak>
-        <p><label><input type='radio' value='rock' v-model='chosen'>💎 Rock</label></p>
-        <p><label><input type='radio' value='paper' v-model='chosen'>📰 Paper</label></p>
-        <p><label><input type='radio' value='scissors' v-model='chosen'>✂ Scissors</label></p>
-        <p><label><input type='radio' value='lizard' v-model='chosen'>🦎 Lizard</label></p>
-        <p><label><input type='radio' value='spock' v-model='chosen'>🖖 Spock</label></p>
-        <button v-on:click='playerAttack(chosen)'>Attack!</button>
-
-        <div id='matchResult'>
-            <h2>The computer chose:</h2>
-            <div id='rpslsCompChoice'></div>
-            <p></p>
-            <div id='won' class='hidden'>You won!</div>
-            <div id='lost' class='hidden'>You lost</div>
-            <div id='tie' class='hidden'>It's a draw!</div>
+        <p><label><input type='radio' v-model='chosen' value='rock'>💎 Rock</label></p>
+        <p><label><input type='radio' v-model='chosen' value='paper'>📰 Paper</label></p>
+        <p><label><input type='radio' v-model='chosen' value='scissors'>✂ Scissors</label></p>
+        <p><label><input type='radio' v-model='chosen' value='lizard'>🦎 Lizard</label></p>
+        <p><label><input type='radio' v-model='chosen' value='spock'>🖖 Spock</label></p>
+        <button v-on:click='match(chosen)'>Attack!</button>
+        <div v-if='compChoice'>
+            <div v-if='chosen'>Player chose: {{ chosen }}</div>
+            <div>Computer chose: {{ compChoice }}</div>
+            <div v-if='winner == "player"' id='won'>You won!</div>
+            <div v-else-if='winner == "tie"'>It's a draw!</div>
+            <div v-else id='lost'>You lost.</div>
         </div>
     </div>
 </body>
