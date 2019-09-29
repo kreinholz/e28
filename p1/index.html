@@ -18,17 +18,24 @@
     <p>As a cheat sheet, here is a diagram of what beats what:</p>
     <p><img src='images/rpsls.png' alt='Rock-Paper-Scissors-Lizard-Spock-Diagram'></p>
     <p>Got it? Good. Let's play!</p>
-
-    <h2>Choose your attack!</h2>
     <div id='app' v-cloak>
+        <div v-if='playerWins.length > 0 || computerWins.length > 0'>
+            <h3>Won/Loss Record:</h3>
+            <p>Player Wins: {{ playerWins.length }} | Computer Wins: {{ computerWins.length }}</p>
+            <p>Your <span v-if='playerWins'>{{ playerWins.length }}</span> winning move(s):</p>
+            <ul>
+                <li v-for='move in playerWins'>{{ move }}</li>
+            </ul>
+        </div>
+        <h2>Choose your attack!</h2>
         <p><label><input type='radio' v-model='chosen' value='rock'>💎 Rock</label></p>
         <p><label><input type='radio' v-model='chosen' value='paper'>📰 Paper</label></p>
         <p><label><input type='radio' v-model='chosen' value='scissors'>✂ Scissors</label></p>
         <p><label><input type='radio' v-model='chosen' value='lizard'>🦎 Lizard</label></p>
         <p><label><input type='radio' v-model='chosen' value='spock'>🖖 Spock</label></p>
         <button v-on:click='match(chosen)'>Attack!</button>
-        <div v-if='compChoice'>
-            <div v-if='chosen'>Player chose: {{ chosen }}</div>
+        <div v-show='compChoice'>
+            <div v-show='chosen'>Player chose: {{ chosen }}</div>
             <div>Computer chose: {{ compChoice }}</div>
             <div v-if='winner == "player"' id='won'>You won!</div>
             <div v-else-if='winner == "tie"'>It's a draw!</div>

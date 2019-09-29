@@ -7,7 +7,9 @@ let app = new Vue({
         'unicodeCompAttacks': ['💎', '📰', '✂', '🦎', '🖖'],
         'chosen': '',
         'compChoice': '',
-        'winner': ''
+        'winner': '',
+        'playerWins': [],
+        'computerWins': []
     },
     methods: {
         match: function () {
@@ -24,26 +26,38 @@ let app = new Vue({
             // Define a player victory - rock
             else if (this.chosen == 'rock' && ((compAttack == 'scissors') || (compAttack == 'lizard'))) {
                 this.winner = 'player';
+                // push the winning move to the playerWins array
+                this.playerWins.push('💎');
             }
             // Define a player victory - paper
             else if (this.chosen == 'paper' && ((compAttack == 'rock') || (compAttack == 'spock'))) {
                 this.winner = 'player';
+                // push the winning move to the playerWins array
+                this.playerWins.push('📰');
             }
             // Define a player victory - scissors
             else if (this.chosen == 'scissors' && ((compAttack == 'paper') || (compAttack == 'lizard'))) {
                 this.winner = 'player';
+                // push the winning move to the playerWins array
+                this.playerWins.push('✂');
             }
             // Define a player victory - lizard
             else if (this.chosen == 'lizard' && ((compAttack == 'paper') || (compAttack == 'spock'))) {
                 this.winner = 'player';
+                // push the winning move to the playerWins array
+                this.playerWins.push('🦎');
             }
             // Define a player victory - spock
             else if (this.chosen == 'spock' && ((compAttack == 'rock') || (compAttack == 'scissors'))) {
                 this.winner = 'player';
+                // push the winning move to the playerWins array
+                this.playerWins.push('🖖');
             }
             // If none of the above conditions is met, the computer won
             else {
                 this.winner = 'computer';
+                // push the winning move to the computerWins array
+                this.computerWins.push(compAttack);
             }
         }
     }
