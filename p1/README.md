@@ -7,6 +7,3 @@ Image Source: <https://the-big-bang-theory.com/images/uploads/7/th_91035b831e518
 
 Radio button bindings: <https://vuejs.org/v2/guide/forms.html#Radio-1> and
 <https://codepen.io/yanxyz/pen/pyOQMy>
-
-## Notes for instructor
-*any notes for me to refer to while grading; if none, omit this section*

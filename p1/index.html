@@ -15,17 +15,13 @@
         don't, <a href="https://the-big-bang-theory.com/rock-paper-scissors-lizard-spock/" target=_blank>here's a
             primer</a>.
     </p>
-    <p>As a cheat sheet, here is a diagram of what beats what:</p>
-    <p><img src='images/rpsls.png' alt='Rock-Paper-Scissors-Lizard-Spock-Diagram'></p>
-    <p>Got it? Good. Let's play!</p>
     <div id='app' v-cloak>
-        <div v-if='playerWins.length > 0 || computerWins.length > 0'>
-            <h3>Won/Loss Record:</h3>
-            <p>Player Wins: {{ playerWins.length }} | Computer Wins: {{ computerWins.length }}</p>
-            <p>Your <span v-if='playerWins'>{{ playerWins.length }}</span> winning move(s):</p>
-            <ul>
-                <li v-for='move in playerWins'>{{ move }}</li>
-            </ul>
+        <input type='checkbox' id='showDiagram' v-model='showDiagram'>
+        <label for='showDiagram'>Show/hide diagram of moves/outcomes.</label>
+        <div v-if='showDiagram'>
+            <p>Here is a diagram of what beats what:</p>
+            <p><img src='images/rpsls.png' alt='Rock-Paper-Scissors-Lizard-Spock-Diagram'></p>
+            <p>Got it? Good. Let's play!</p>
         </div>
         <h2>Choose your attack!</h2>
         <p><label><input type='radio' v-model='chosen' value='rock'>💎 Rock</label></p>
@@ -40,6 +36,14 @@
             <div v-if='winner == "player"' id='won'>You won!</div>
             <div v-else-if='winner == "tie"'>It's a draw!</div>
             <div v-else id='lost'>You lost.</div>
+        </div>
+        <div v-if='playerWins.length > 0 || computerWins.length > 0'>
+            <h3>Won/Loss Record:</h3>
+            <p>Player Wins: {{ playerWins.length }} | Computer Wins: {{ computerWins.length }}</p>
+            <p>Your <span v-if='playerWins'>{{ playerWins.length }}</span> winning move(s):</p>
+            <ul>
+                <li v-for='move in playerWins'>{{ move }}</li>
+            </ul>
         </div>
     </div>
 </body>

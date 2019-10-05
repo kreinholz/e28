@@ -3,9 +3,10 @@
 let app = new Vue({
     el: '#app',
     data: {
+        'showDiagram': true,
         'compAttacks': ['rock', 'paper', 'scissors', 'lizard', 'spock'],
         'unicodeCompAttacks': ['💎', '📰', '✂', '🦎', '🖖'],
-        'chosen': '',
+        'chosen': 'spock',
         'compChoice': '',
         'winner': '',
         'playerWins': [],
