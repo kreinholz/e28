@@ -22,22 +22,24 @@
       <p>Player Wins: {{ playerWins.length }} | Computer Wins: {{ computerWins.length }}</p>
       <p>
         Your
-        <span v-if="playerWins">{{ playerWins.length }}</span> winning move(s):
+        <span v-if="playerWins">{{ playerWins.length }}</span> winning
+        <span v-if="playerWins.length == 1">move:</span>
+        <span v-if="playerWins.length > 1">moves:</span>
       </p>
-      <ul>
-        <li v-for="move in playerWins" :key="move.id">{{ move }}</li>
-      </ul>
+      <winning-moves :playerWins="playerWins"></winning-moves>
     </div>
   </div>
 </template>
 
 <script>
 import PlayerMove from "./components/PlayerMove.vue";
+import WinningMoves from "./components/WinningMoves.vue";
 
 export default {
   name: "app",
   components: {
-    PlayerMove
+    PlayerMove,
+    WinningMoves
   },
   data: function() {
     return {

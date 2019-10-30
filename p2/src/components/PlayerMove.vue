@@ -34,10 +34,7 @@
 export default {
   data: function() {
     return {
-      chosen: {
-        type: String,
-        default: "spock"
-      }
+      chosen: "spock"
     };
   },
   template: "#player-move"
