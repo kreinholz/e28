@@ -5,7 +5,7 @@
     <img
       class="product-thumb"
       :alt="'Product image of ' + product.name"
-      :src="'/products/' + product.id + '.jpg'"
+      :src="require('../assets/images/products/' + product.id + '.jpg')"
     />
     <p class="product-description">{{ product.description }}</p>
     <div class="product-price">${{ product.price }}</div>
