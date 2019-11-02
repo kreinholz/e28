@@ -1,0 +1,28 @@
+<template>
+  <div id="app">
+    <img alt="ZipFoods logo" src="./assets/images/zipfoods-logo.png" id="logo" />
+    <p>ZipFoods is your one-stop-shop for convenient online grocery shopping in the greater Boston area.</p>
+    <show-featured></show-featured>
+    <show-products></show-products>
+  </div>
+</template>
+
+<script>
+import ShowProducts from "./components/ShowProducts.vue";
+import ShowFeatured from "./components/ShowFeatured.vue";
+import { products } from "./products.js";
+
+export default {
+  name: "app",
+  components: { ShowProducts, ShowFeatured },
+  data: function() {
+    return {
+      products: products
+    };
+  }
+};
+</script>
+
+<style lang='scss'>
+@import "./assets/css/zipfoods.scss";
+</style>
