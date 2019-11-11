@@ -4,16 +4,20 @@ import App from './App.vue'
 Vue.config.productionTip = false
 
 import VueRouter from 'vue-router';
-import ShowHome from './components/ShowHome.vue';
-import ShowProducts from './components/ShowProducts.vue';
-import ShowCategories from './components/ShowCategories.vue';
+import HomePage from './components/pages/HomePage.vue';
+import ProductsPage from './components/pages/ProductsPage.vue';
+import ProductPage from './components/pages/ProductPage.vue';
+import CategoriesPage from './components/pages/CategoriesPage.vue';
+import CartPage from './components/pages/CartPage.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: ShowHome },
-  { path: '/products', component: ShowProducts },
-  { path: '/categories', component: ShowCategories }
+  { path: '/', component: HomePage, name: 'home' },
+  { path: '/products', component: ProductsPage, name: 'products' },
+  { path: '/products/:id', component: ProductPage, name: 'product', props: true },
+  { path: '/categories', component: CategoriesPage, name: 'categories' },
+  { path: '/cart', component: CartPage, name: 'cart' }
 ]
 
 const router = new VueRouter({

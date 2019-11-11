@@ -1,5 +1,5 @@
 {
-  "name": "zipfoods",
+  "name": "p3",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -20,8 +20,6 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "sass": "^1.23.3",
-    "sass-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
@@ -33,9 +31,7 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {
-      "no-console": "off"
-    },
+    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
     }
