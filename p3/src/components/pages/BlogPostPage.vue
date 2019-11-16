@@ -2,7 +2,7 @@
   <div id='blog-post-page' v-if='post'>
     <h1>{{ post.title }}</h1>
     <div class='date'>{{ post.date }}</div>
-    <div v-if='post.image'><img
+    <div v-if='post.image' class='image'><img
       :alt='"Blog Post Image for  " + post.title'
       :src='require("../../assets/images/" + post.image)'
     /></div>

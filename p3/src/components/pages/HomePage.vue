@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='image'>
     <img
       src='../../assets/images/portraits_canvas.jpg'
       alt='Painting of the Königsberg Castle courtyard in 1867'
