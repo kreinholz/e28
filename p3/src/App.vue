@@ -1,28 +1,36 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id='app'>
+    <img alt='Blog logo' src='./assets/images/blog_logo.png' id='logo' />
+    <nav>
+      <ul>
+        <li v-for='link in links' :key='link'>
+          <router-link exact :to='{ name: link }'>
+            {{ link }}
+            <span v-if='link == "favorites"'>({{ sharedState.favoritesCount }})</span>
+          </router-link>
+        </li>
+      </ul>
+    </nav>
+
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import * as app from './app.js';
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  components: {},
+  data: function() {
+    return {
+      links: ['home', 'posts', 'categories', 'favorites'],
+      sharedState: app.store
+    };
+  },
+  mounted() {
+    this.favorites = new app.Favorites();
+    app.store.favoritesCount = this.favorites.count();
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
