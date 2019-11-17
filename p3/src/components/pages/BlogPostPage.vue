@@ -16,6 +16,14 @@
       <div class='alert' v-if='addAlert'>Post has been saved to Favorites</div>
     </transition>
 
+    <div v-if='comments'><h2>Comments</h2>
+      <div v-for='comment in comments' :key='comment.id' :comment='comment'>
+        <div v-if='comment.postId == post.id'>
+          <p>On {{ comment.date }}, {{ comment.commenter }} said:</p>
+          <p>{{ comment.body }}</p>
+        </div>
+      </div>
+    </div>
     <router-link :to='"/posts"'>&larr; Return to all blog posts</router-link>
   </div>
 </template>
@@ -28,12 +36,16 @@ export default {
   data: function() {
     return {
       post: null,
+      comments: null,
       addAlert: false
     };
   },
   mounted() {
     app.axios.get(app.config.api + 'posts/' + this.id).then(response => {
       this.post = response.data;
+    });
+    app.axios.get(app.config.api + 'comments').then(response => {
+      this.comments = response.data;
     });
   },
   methods: {

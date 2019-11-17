@@ -503,3 +503,27 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
     border-top: 6px solid #2980b9;
     text-align: center;
 }
+
+/* Some zipfoods CSS */
+
+.alert {
+    background-color: green;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    padding: 5px;
+    margin: 5px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+    {
+    opacity: 0;
+}
