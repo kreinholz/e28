@@ -3,12 +3,16 @@
     <div>
       <h2>Categories</h2>
       <ul class='cleanList'>
-        <li v-for='(category, id) in categories' :key='id'>{{ category }}</li>
+        <li
+          v-for='(category, id) in categories'
+          :key='id'
+          @click='filterPosts(category)'
+        >{{ category }}</li>
       </ul>
     </div>
-    <div id='posts'>
+    <div v-if='filteredPosts.length > 0' id='posts'>
       <h2>Blog Posts</h2>
-      <show-blog-post v-for='post in posts' :key='post.id' :post='post'></show-blog-post>
+      <show-blog-post v-for='post in filteredPosts' :key='post.id' :post='post'></show-blog-post>
     </div>
   </div>
 </template>
@@ -23,7 +27,8 @@ export default {
   data: function() {
     return {
       posts: null,
-      categories: null
+      categories: null,
+      filteredPosts: []
     };
   },
   methods: {
@@ -32,6 +37,18 @@ export default {
       let mergedCategories = [].concat.apply([], categories);
       // Return unique, sorted categories
       this.categories = [...new Set(mergedCategories)].sort();
+    },
+    filterPosts: function(selectedCategory) {
+      // Re-initialize filteredPosts array, to clear out posts from a previous category
+      this.filteredPosts = [];
+      // Iterate over the array of objects, searching for the user-selected category
+      this.posts.forEach(function(object) {
+        if (object.categories.includes(selectedCategory)) {
+          console.log(selectedCategory);
+          console.log(object);
+          this.filteredPosts.push(object);
+        }
+      });
     }
   },
   mounted() {

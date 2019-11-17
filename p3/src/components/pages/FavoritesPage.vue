@@ -7,7 +7,9 @@
     <ul v-else-if='posts.length > 0' class='cleanList'>
       <li v-for='item in items' :key='item.id'>
         <button @click='removeFromFavorites(item.id)'>Remove</button>
-        <router-link :to='{ name: "post", params: {"id" : item.id }}'>{{ getPostDetails(item.id)['title'] }}</router-link>
+        <router-link
+          :to='{ name: "post", params: {"id" : item.id }}'
+        >{{ getPostDetails(item.id)['title'] }}</router-link>
       </li>
     </ul>
   </div>
@@ -41,7 +43,7 @@ export default {
     this.items = this.favorites.getItems();
 
     this.posts = app.axios
-      .get(app.config.api + 'posts', { maxContentLength: 1000000 })
+      .get(app.config.api + 'posts')
       .then(response => (this.posts = response.data));
   }
 };

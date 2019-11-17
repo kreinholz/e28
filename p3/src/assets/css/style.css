@@ -567,7 +567,7 @@ nav ul {
         }
     }
 }
-
+/* this looks like sass scss thrown in...convert to regular css? */
 #posts {
     .post {
         width: 75%;
