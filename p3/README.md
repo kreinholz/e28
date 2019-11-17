@@ -1,24 +1,13 @@
-# p3
+# Project 3
++ By: Kevin Reinholz
++ Production URL: <http://p3.kreinholz.me>
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Outline of features
+*Brief list summarizing the features of your app*
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Outside resources
+*Your list of outside resources go here.*
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Notes for instructor
+*Any notes for me to refer to while grading; if none, omit this section.*

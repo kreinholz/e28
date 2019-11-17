@@ -506,6 +506,11 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 
 /* Some zipfoods CSS */
 
+.cleanList {
+    list-style-type: none;
+    padding: 0;
+}
+
 .alert {
     background-color: green;
     color: white;
@@ -526,4 +531,59 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
 /* .fade-leave-active below version 2.1.8 */
     {
     opacity: 0;
+}
+
+nav ul {
+    list-style-type: none;
+
+    li {
+        display: inline-block;
+
+        a:link,
+        a:visited,
+        a:active,
+        a:hover {
+            text-transform: capitalize;
+            padding: 5px;
+            margin: 5px;
+            cursor: pointer;
+            color: blue;
+        }
+
+        a:hover {
+            background-color: blue;
+            color: white;
+            text-decoration: none;
+        }
+
+        a.router-link-active:link,
+        a.router-link-active:visited,
+        a.router-link-active:active,
+        a.router-link-active:hover {
+            text-decoration: none;
+            color: black;
+            background-color: white;
+            cursor: inherit;
+        }
+    }
+}
+
+#posts {
+    .post {
+        width: 75%;
+        margin: auto;
+        margin-bottom: 20px;
+        border: 1px solid black;
+        padding: 20px;
+
+        .post-title {
+            font-weight: bold;
+            font-size: 2.0rem;
+            margin: 5px 0 10px 0;
+        }
+
+        .post-thumb {
+            width: 200px;
+        }
+    }
 }
