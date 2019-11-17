@@ -10,7 +10,7 @@
         >{{ category }}</li>
       </ul>
     </div>
-    <div v-if='filteredPosts.length > 0' id='posts'>
+    <div v-if='categorySelected' id='posts'>
       <h2>Blog Posts</h2>
       <show-blog-post v-for='post in filteredPosts' :key='post.id' :post='post'></show-blog-post>
     </div>
@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import ShowBlogPost from './../ShowBlogPost.vue';
 import * as app from './../../app.js';
+import ShowBlogPost from './../ShowBlogPost.vue';
 
 export default {
   name: 'CategoriesPage',
@@ -28,7 +28,8 @@ export default {
     return {
       posts: null,
       categories: null,
-      filteredPosts: []
+      filteredPosts: [],
+      categorySelected: false
     };
   },
   methods: {
@@ -44,9 +45,9 @@ export default {
       // Iterate over the array of objects, searching for the user-selected category
       this.posts.forEach(function(object) {
         if (object.categories.includes(selectedCategory)) {
-          console.log(selectedCategory);
-          console.log(object);
+          // add the matching object to the filteredPosts array
           this.filteredPosts.push(object);
+          this.categorySelected = true;
         }
       });
     }
