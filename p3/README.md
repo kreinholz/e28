@@ -15,6 +15,7 @@ Blog App:
     - CSS styling derived from https://templated.co/privy and zipfoods e28 course scss file, modified for this app's purposes
     - Incorporated emoji-mart-vue npm module to allow non-mobile users to select emojis for inclusion in their blog comments
     - Incorporated vue2-editor npm module to allow rich text in comments (experimental--this is really intended for p4, to allow rich text in new blog posts. Allowing rich texts, and by extension, html, in comments is undesirable for security/XSS attack reasons)
+    - [https://www.reddit.com/r/vuejs/comments/5ae7fj/how_do_i_reference_data_from_a_function_inside_a/], an absolute lifesaver for getting CategoriesPage.vue component to work (how to access 'this' inside of a function call by first assigning it to another variable outside the function)
 
 ## Notes for instructor
 

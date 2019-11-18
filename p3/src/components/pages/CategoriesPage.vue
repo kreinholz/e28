@@ -42,12 +42,15 @@ export default {
     filterPosts: function(selectedCategory) {
       // Re-initialize filteredPosts array, to clear out posts from a previous category
       this.filteredPosts = [];
+      // Define a new variable to allow access to 'this' within modified function scope--
+      // see https://www.reddit.com/r/vuejs/comments/5ae7fj/how_do_i_reference_data_from_a_function_inside_a/
+      let that = this;
       // Iterate over the array of objects, searching for the user-selected category
       this.posts.forEach(function(object) {
         if (object.categories.includes(selectedCategory)) {
           // add the matching object to the filteredPosts array
-          this.filteredPosts.push(object);
-          this.categorySelected = true;
+          that.filteredPosts.push(object);
+          that.categorySelected = true;
         }
       });
     }
