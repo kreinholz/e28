@@ -53,6 +53,7 @@
         </div>
       </div>
     </div>
+    <p></p>
     <router-link :to='"/posts"'>&larr; Return to all blog posts</router-link>
   </div>
 </template>
