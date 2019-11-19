@@ -8,7 +8,7 @@ export default class Favorites {
         // Extract JSON favorites string from local storage
         let favorites = localStorage.getItem('favorites');
 
-        // Parse JSON cart String to `items` object
+        // Parse JSON favorites String to `items` object
         this.items = (favorites) ? JSON.parse(favorites) : [];
     }
 
@@ -42,15 +42,15 @@ export default class Favorites {
      */
     add(postId) {
 
-        // First see if product is already present
+        // First see if post is already present
         let item = this.getItem(postId)
 
         if (item) {
-            // Product is in favorites already; don't add it again
+            // Post is in favorites already; don't add it again
             return;
 
         } else {
-            // Product not in favorites, add as new item
+            // Post not in favorites, add as new item
             this.items.push({
                 id: postId
             });

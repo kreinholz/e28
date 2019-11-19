@@ -7,6 +7,7 @@
           v-for='(category, id) in categories'
           :key='id'
           @click='filterPosts(category)'
+          class='nav'
         >{{ category }}</li>
       </ul>
     </div>

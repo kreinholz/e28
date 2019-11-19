@@ -1,26 +1,55 @@
 <template>
   <div id='blog-post-page' v-if='post'>
     <h1>{{ post.title }}</h1>
+    <p></p>
     <div class='date'>{{ post.date }}</div>
-    <div v-if='post.image' class='image'><img
-      :alt='"Blog Post Image for  " + post.title'
-      :src='require("../../assets/images/" + post.image)'
-    /></div>
+    <p></p>
+    <div v-if='post.image' class='image'>
+      <img
+        :alt='"Blog Post Image for  " + post.title'
+        :src='require("../../assets/images/" + post.image)'
+      />
+    </div>
     <!-- v-html is dangerous, I know, but since I would theoretically be controlling the server
-    in a realworld application, for demonstration purposes I'm allowing the injection of raw html -->
-    <p class='description' v-html=post.content></p>
+    in a realworld application, for demonstration purposes I'm allowing the injection of raw html-->
+    <p class='description' v-html='post.content'></p>
 
     <button @click='addToFavorites(post.id)'>Add to Favorites</button>
 
     <transition name='fade'>
       <div class='alert' v-if='addAlert'>Post has been saved to Favorites</div>
     </transition>
-
-    <div v-if='comments'><h2>Comments</h2>
+    <p></p>
+    <p>Share on Social Media</p>
+    <social-sharing :url='this.$route.fullPath' inline-template>
+      <div>
+        <network network='facebook'>
+          <i class='fa fa-fw fa-facebook'></i> Facebook
+        </network>
+        <network network='linkedin'>
+          <i class='fa fa-fw fa-linkedin'></i> LinkedIn
+        </network>
+        <network network='pinterest'>
+          <i class='fa fa-fw fa-pinterest'></i> Pinterest
+        </network>
+        <network network='reddit'>
+          <i class='fa fa-fw fa-reddit'></i> Reddit
+        </network>
+        <network network='twitter'>
+          <i class='fa fa-fw fa-twitter'></i> Twitter
+        </network>
+        <network network='whatsapp'>
+          <i class='fa fa-fw fa-whatsapp'></i> Whatsapp
+        </network>
+      </div>
+    </social-sharing>
+    <p></p>
+    <div>
+      <h2>Comments</h2>
       <div v-for='comment in comments' :key='comment.id' :comment='comment'>
         <div v-if='comment.postId == post.id'>
-          <p>On {{ comment.date }}, {{ comment.commenter }} said:</p>
-          <p>{{ comment.body }}</p>
+          <p class='comment'>On {{ comment.date }}, {{ comment.commenter }} said:</p>
+          <p class='comment'>{{ comment.body }}</p>
         </div>
       </div>
     </div>
@@ -30,8 +59,11 @@
 
 <script>
 import * as app from './../../app.js';
+import SocialSharing from 'vue-social-sharing';
+
 export default {
   name: 'BlogPostPage',
+  components: { SocialSharing },
   props: ['id'],
   data: function() {
     return {

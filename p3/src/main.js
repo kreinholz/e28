@@ -10,7 +10,9 @@ import BlogPostPage from './components/pages/BlogPostPage.vue';
 import CategoriesPage from './components/pages/CategoriesPage.vue';
 import FavoritesPage from './components/pages/FavoritesPage.vue';
 
-Vue.use(VueRouter);
+import SocialSharing from 'vue-social-sharing';
+
+Vue.use(VueRouter, SocialSharing);
 
 const routes = [
   { path: '/', component: HomePage, name: 'home' },
