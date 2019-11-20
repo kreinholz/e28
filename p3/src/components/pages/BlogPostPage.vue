@@ -21,7 +21,7 @@
     </transition>
     <p></p>
     <p>Share on Social Media</p>
-    <social-sharing :url='this.$route.fullPath' inline-template>
+    <social-sharing :url='this.$router.fullPath' inline-template>
       <div>
         <network network='facebook'>
           <i class='fa fa-fw fa-facebook'></i> Facebook
