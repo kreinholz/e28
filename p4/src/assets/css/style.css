@@ -1,0 +1,468 @@
+/*********************************************************************************/
+/* Privy CSS downloaded from https://templated.co/privy                          */
+/*********************************************************************************/
+
+html, body
+{
+    height: 100%;
+}
+
+body
+{
+    margin: 10px;
+    padding: 0px;
+    background: #1f1923;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 12pt;
+    font-weight: 300;
+    color: #ffffcc;
+}
+
+
+h1, h2, h3
+{
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    color: #ffffcc;
+}
+
+p, ol, ul
+{
+    margin-top: 0;
+}
+
+ol, ul
+{
+    padding: 0;
+    list-style: none;
+}
+
+p
+{
+    line-height: 180%;
+}
+
+a
+{
+    color: #2980b9;
+}
+
+a:hover
+{
+    text-decoration: none;
+}
+
+.container
+{
+    overflow: hidden;
+    margin: 0em auto;
+    width: 1200px;
+}
+
+/*********************************************************************************/
+/* Image Style                                                                   */
+/*********************************************************************************/
+
+.image
+{
+    display: inline-block;
+}
+
+.image img
+{
+    display: block;
+    width: 100%;
+}
+
+.image-full
+{
+    display: block;
+    width: 100%;
+    margin: 0 0 2em 0;
+}
+
+.image-left
+{
+    float: left;
+    margin: 0 2em 2em 0;
+}
+
+.image-centered
+{
+    display: block;
+    margin: 0 0 2em 0;
+}
+
+.image-centered img
+{
+    margin: 0 auto;
+    width: auto;
+}
+
+.thumbnail
+{
+    width: 25%;
+}
+
+/*********************************************************************************/
+/* List Styles                                                                   */
+/*********************************************************************************/
+
+ul.style1
+{
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    overflow: hidden;
+    list-style: none;
+    text-align: left;
+    color: #6c6c6c
+}
+
+ul.style1 li
+{
+    padding: 1.6em 0em 0em 0em;
+    margin: 0 0 2.5em 0;
+    border-top: 1px solid rgba(0,0,0,.1); 
+}
+
+ul.style1 li:first-child
+{
+    border-top: none;
+}
+
+ul.style1 p
+{
+    margin: 0;
+}
+
+ul.style1 a
+{
+    display: block;
+    text-decoration: none;
+    color: #2D2D2D;
+}
+
+ul.style1 a:hover
+{
+    text-decoration: underline;
+}
+
+ul.style1 h3
+{
+    padding: 1em 0em 5px 0em;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+ul.style1 .first
+{
+    padding-top: 0;
+    background: none;
+}
+
+ul.style1 .date
+{
+    float: left;
+    position: relative;
+    width: 80px;
+    height: 70px;
+    margin: 0.5em 1.5em 0em 0.5em;
+    padding: 1.5em 0em 1.5em 0em;
+    box-shadow: 0px 0px 0px 5px rgba(255,255,255,0.1);
+    line-height: normal;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 0px rgba(0,0,0,.2);
+    font-size: 1em;
+    font-weight: 400;
+    border-right: 1px solid rgba(0,0,0,.1); 
+}
+
+ul.style1 .date:after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+
+ul.style1 .date b
+{
+    margin: 0;
+    padding: 0;
+    display: block;
+    margin-top: -5px;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+ul.style1 .date a:hover
+{
+    text-decoration: none;
+}
+    
+/*********************************************************************************/
+/* Header                                                                        */
+/*********************************************************************************/
+
+#header
+{
+    position: relative;
+    float: left;
+    width: 300px;
+    padding: 3em 0em;
+}
+
+/*********************************************************************************/
+/* Logo                                                                          */
+/*********************************************************************************/
+
+#logo
+{
+    text-align: center;
+}
+
+#logo h1
+{
+    display: block;
+}
+
+#logo a
+{
+    text-decoration: none;
+    color: #FFF;
+}
+
+#logo span
+{
+    padding-right: 0.5em;
+    text-transform: uppercase;
+    font-size: 0.90em;
+    color: rgba(255,255,255,0.3);
+}
+
+#logo span a
+{
+    color: rgba(255,255,255,0.5);
+}
+
+#logo img
+{
+    margin-bottom: 1em;
+}
+
+/*********************************************************************************/
+/* Menu                                                                          */
+/*********************************************************************************/
+
+#menu li
+{
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+#menu li a, #menu li span
+{
+    display: block;
+    padding: 2em 1.5em;
+    text-align: center;
+    text-decoration:  none;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+}
+
+#menu .current_page_item a
+{
+    background: #2980b9;
+    color: rgba(255,255,255,1);
+}
+
+/*********************************************************************************/
+/* Banner                                                                        */
+/*********************************************************************************/
+
+#banner
+{
+    margin-bottom: 4em;
+}
+
+/*********************************************************************************/
+/* Page                                                                          */
+/*********************************************************************************/
+
+#page
+{
+    background: #1f1923;
+}
+
+/*********************************************************************************/
+/* Main                                                                          */
+/*********************************************************************************/
+
+#main
+{
+    overflow: hidden;
+    float: right;
+    width: 800px;
+    padding: 3em 50px 5em 50px;
+    background: #FFF;
+    border-top: 6px solid #2980b9;
+    text-align: center;
+}
+
+/* CSS generated by the browser from zipfoods' SCSS file once transpiled... */
+*
+{
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box
+}
+
+#app
+{
+    max-width:800px;
+    width:100%;
+    margin:auto;
+    padding-bottom:20px
+}
+
+#app,header
+{
+    text-align:center
+}
+
+header
+{
+    margin-top:20px
+}
+
+nav ul
+{
+    list-style-type:none
+}
+
+nav ul li
+{
+    display:inline-block
+}
+
+nav ul li a:active,nav ul li a:hover,nav ul li a:link,nav ul li a:visited
+{
+    text-transform:capitalize;
+    padding:5px;
+    margin:5px;
+    cursor:pointer;
+    color:#0074d9
+}
+
+nav ul li a:hover
+{
+    background-color:#0074d9;
+    color:#fff;
+    text-decoration:none
+}
+
+nav ul li a.router-link-active:active,nav ul li a.router-link-active:hover,nav ul li a.router-link-active:link,nav ul li a.router-link-active:visited
+{
+    text-decoration:none;
+    color:#111;
+    background-color:#fff;
+    cursor:inherit
+}
+
+.nav:active
+{
+    text-transform:capitalize;
+    padding:5px;
+    margin:5px;
+    cursor:pointer;
+    color:#0074d9
+}
+
+.nav:hover
+{
+    background-color:#0074d9;
+    color:#fff;
+    text-decoration:none
+}
+
+.nav:active
+{
+    text-decoration:none;
+    color:#111;
+    background-color:#fff;
+    cursor:inherit
+}
+
+#posts .post
+{
+    width:75%;
+    margin:auto;
+    margin-bottom:20px;
+    border:1px solid #000;
+    padding:20px;
+}
+
+.description
+{
+    text-align:left;
+}
+
+.comment
+{
+    text-align:left;
+    color:white;
+}
+
+#posts .post .post-name
+{
+    font-weight:700;
+    font-size:2rem;
+    margin:5px 0 10px 0
+}
+
+#posts .post .post-thumb
+{
+    width:200px
+}
+
+#posts .post .post-description
+{
+    width:75%;
+    margin:auto;
+    text-align:left;
+    font-style:italic
+}
+
+.cleanList
+{
+    list-style-type:none;
+    padding:0
+}
+
+.alert
+{
+    background-color:#2ecc40;
+    color:#fff;
+    border-radius:5px;
+    font-weight:700;
+    padding:5px;
+    margin:5px
+}
+
+.fade-enter-active,.fade-leave-active
+{
+    -webkit-transition:opacity .5s;
+    transition:opacity .5s
+}
+
+.fade-enter,.fade-leave-to
+{
+    opacity:0
+}
