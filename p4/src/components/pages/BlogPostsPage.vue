@@ -14,7 +14,6 @@ export default {
   data: function() {
     return {};
   },
-  mounted() {},
   computed: {
     posts: function() {
       return this.$store.state.posts;

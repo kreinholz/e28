@@ -8,7 +8,10 @@
           :key='id'
           @click='filterPosts(category)'
           class='nav'
-        >{{ category }}</li>
+        >
+          <span v-if='category == activeCategory' class='selected'>{{ category }}</span>
+          <span v-else>{{ category }}</span>
+        </li>
       </ul>
     </div>
     <div v-if='categorySelected' id='posts'>
@@ -27,13 +30,15 @@ export default {
   data: function() {
     return {
       filteredPosts: [],
-      categorySelected: false
+      categorySelected: false,
+      activeCategory: null
     };
   },
   methods: {
     filterPosts: function(selectedCategory) {
-      // Re-initialize filteredPosts array, to clear out posts from a previous category
+      // Re-initialize the filteredPosts array and activeCategory, to clear out posts from a previous category
       this.filteredPosts = [];
+      this.activeCategory = null;
       // Define a new variable to allow access to 'this' within modified function scope--
       // see https://www.reddit.com/r/vuejs/comments/5ae7fj/how_do_i_reference_data_from_a_function_inside_a/
       let that = this;
@@ -43,6 +48,7 @@ export default {
           // add the matching object to the filteredPosts array
           that.filteredPosts.push(object);
           that.categorySelected = true;
+          that.activeCategory = selectedCategory;
         }
       });
     }

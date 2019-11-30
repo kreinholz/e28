@@ -392,7 +392,7 @@ nav ul li a.router-link-active:active,nav ul li a.router-link-active:hover,nav u
     text-decoration:none
 }
 
-.nav:active
+.selected
 {
     text-decoration:none;
     color:#111;
@@ -466,3 +466,11 @@ nav ul li a.router-link-active:active,nav ul li a.router-link-active:hover,nav u
 {
     opacity:0
 }
+
+table {
+    border-collapse: collapse;
+  }
+  
+  table, th, td {
+    border: 1px solid white;
+  }
