@@ -15,6 +15,7 @@ import store from './store';
 import SocialSharing from 'vue-social-sharing';
 
 Vue.use(VueRouter, SocialSharing);
+Vue.use(require('vue-moment'));
 
 const routes = [
   { path: '/', component: HomePage, name: 'home' },

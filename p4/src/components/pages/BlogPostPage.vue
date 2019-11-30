@@ -2,7 +2,7 @@
   <div id='blog-post-page' v-if='post'>
     <h1>{{ post.title }}</h1>
     <p></p>
-    <div class='date'>{{ post.date }}</div>
+    <div class='date'>{{ post.date | moment('dddd, MMMM Do, YYYY, h:mm a') }}</div>
     <p></p>
     <div v-if='post.image' class='image'>
       <img
@@ -48,7 +48,9 @@
       <h2>Comments</h2>
       <div v-for='comment in comments' :key='comment.id' :comment='comment'>
         <div v-if='comment.postId == post.id'>
-          <p class='comment'>On {{ comment.date }}, {{ comment.commenter }} said:</p>
+          <p
+            class='comment'
+          >On {{ comment.date | moment('dddd, MMMM Do, YYYY, h:mm a') }}, {{ comment.commenter }} said:</p>
           <p class='comment'>{{ comment.body }}</p>
         </div>
       </div>
