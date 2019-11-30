@@ -101,23 +101,23 @@ Nice work with the JavaScript Date object in HomePage.vue! I've found Date() to 
 ```
 You could take it even a step further now that you've converted a JSON string to a Date object, and in PersonResponsibility.vue, do something like this to display the paid in full date in a more human-friendly format:
 
+Install vue-moment as an npm module for your project, then add it to main.js:
+
 ```js
-import moment from 'moment'
-
-Vue.filter('formatDate', function(value) {
-  if (value) {
-    return moment(String(value)).format('MM/DD/YYYY hh:mm')
-  }
-}
-
-<span>{{yourDateString | formatDate}}</span>
+Vue.use(require('vue-moment'));
 ```
-See <https://forum.vuejs.org/t/how-to-format-date-for-display/3586/3>. Sadly, Vue doesn't have native support for Date formatting like Angular does, which would allow you to do something simple like:
+
+Then when you want to format your date:
+
+```js
+<span class="sub-hdg">Paid on: </span> {{ paidDate | moment('dddd, MMMM Do, YYYY, h:mm a') }}
+```
+Sadly, Vue doesn't have native support for Date formatting like Angular does, which would allow you to do something as simple as:
 
 ```ts
 <span class="sub-hdg">Paid on: </span> {{ paidDate | date: 'medium' }}
 ```
-But, since Vue doesn't have DatePipe in its templating engine like Angular (<https://angular.io/api/common/DatePipe>), it takes a little more work to format that Date object the way you want it.
+Without the need to install any external packages. But, since Vue doesn't have DatePipe in its templating engine like Angular (<https://angular.io/api/common/DatePipe>), it takes a little (although not a lot) more work to format that Date object the way you want it.
 
 ### Are there any best practices discussed in course material that you feel were not addressed in the code?
 

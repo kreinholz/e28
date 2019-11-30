@@ -1,5 +1,5 @@
 <template>
-<form id='newComment' @submit='checkForm' action='app.config.api + "comments.json"' method='post'>
+<form id='newComment' @submit='checkForm' action='https://e28-p4-5044d.firebaseio.com/comments.json' method='put'>
   <p v-if="errors.length">
     <b>Please correct the following error(s):</b>
     <ul>
@@ -27,7 +27,7 @@
   </p>
 
   <input type='hidden' name='date' :value='currentDate'>
-  <input type='hidden' name='postId' :value='post.id'>
+  <input type='hidden' name='postId' :value='this.$route.path.replace("/posts/", "")'>
 
   <p>
     <input
@@ -40,16 +40,15 @@
 </template>
 
 <script>
-import * as app from './../app.js';
 
 export default {
   name: 'WriteComment',
-  props: ['post'],
   data: function() {
     return {
       errors: [],
       name: null,
-      comment: null
+      comment: null,
+      currentDate: new Date(),
     };
   },
   methods: {

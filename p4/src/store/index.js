@@ -28,12 +28,12 @@ export default new Vuex.Store({
     actions: {
         setBlogPosts(context) {
             app.axios.get(app.config.api + 'posts.json').then(response => {
-                context.commit('setBlogPosts', response.data.slice(1));
+                context.commit('setBlogPosts', response.data);
             });
         },
         setComments(context) {
             app.axios.get(app.config.api + 'comments.json').then(response => {
-                context.commit('setComments', response.data.slice(1));
+                context.commit('setComments', response.data);
             });
         }
     },

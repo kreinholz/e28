@@ -1,6 +1,8 @@
 <template>
   <div id='blog-post-page' v-if='post'>
-    <h1>{{ post.title }}</h1>
+    <!-- v-html is dangerous, I know, but since I would theoretically be controlling the server
+    in a realworld application, for demonstration purposes I'm allowing the injection of raw html-->
+    <h1 v-html='post.title'></h1>
     <p></p>
     <div class='date'>{{ post.date | moment('dddd, MMMM Do, YYYY, h:mm a') }}</div>
     <p></p>
@@ -10,8 +12,6 @@
         :src='require("../../assets/images/" + post.image)'
       />
     </div>
-    <!-- v-html is dangerous, I know, but since I would theoretically be controlling the server
-    in a realworld application, for demonstration purposes I'm allowing the injection of raw html-->
     <p class='description' v-html='post.content'></p>
 
     <button @click='addToFavorites(post.id)'>Add to Favorites</button>
@@ -56,6 +56,8 @@
       </div>
     </div>
     <p></p>
+    <write-comment></write-comment>
+    <p></p>
     <router-link :to='"/posts"'>&larr; Return to all blog posts</router-link>
   </div>
 </template>
@@ -63,10 +65,11 @@
 <script>
 import * as app from './../../app.js';
 import SocialSharing from 'vue-social-sharing';
+import WriteComment from './../WriteComment.vue';
 
 export default {
   name: 'BlogPostPage',
-  components: { SocialSharing },
+  components: { SocialSharing, WriteComment },
   props: ['id'],
   data: function() {
     return {
