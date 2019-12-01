@@ -1,7 +1,7 @@
 <template>
   <div class='post'>
     <router-link :to='{ name: "post", params: {"id" : post.id }}'>
-      <div class='post-title' v-html='post.title'></div>
+      <div class='post-title' v-html='post.title' :id='post.title'></div>
       <div v-if='post.image'>
         <img
           class='thumbnail'
