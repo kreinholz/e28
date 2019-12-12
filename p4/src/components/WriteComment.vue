@@ -45,12 +45,6 @@
             v-else-if='!$v.blogComment.comment.minLength'
           >Your comment must be at least 10 characters long.</div>
         </div>
-        <input
-          type='hidden'
-          name='postId'
-          id='postId'
-          :value='this.$route.path.replace("/posts/", "")'
-        />
       </div>
 
       <button data-test='new-comment-button' type='submit'>Submit Comment</button>
@@ -85,6 +79,7 @@ if (process.env.NODE_ENV == 'development') {
 
 export default {
   name: 'WriteComment',
+  props: ['postId'],
   data: function() {
     return {
       blogComment: blogComment,

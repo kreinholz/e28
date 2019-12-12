@@ -56,7 +56,7 @@
       </div>
     </div>
     <p></p>
-    <write-comment></write-comment>
+    <write-comment :postId='post.id'></write-comment>
     <p></p>
     <router-link :to='"/posts"'>&larr; Return to all blog posts</router-link>
   </div>
