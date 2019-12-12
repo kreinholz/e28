@@ -14,8 +14,12 @@ import store from './store';
 
 import SocialSharing from 'vue-social-sharing';
 
-Vue.use(VueRouter, SocialSharing);
+import Vuelidate from 'vuelidate';
+
+Vue.use(VueRouter);
+Vue.use(SocialSharing);
 Vue.use(require('vue-moment'));
+Vue.use(Vuelidate);
 
 const routes = [
   { path: '/', component: HomePage, name: 'home' },

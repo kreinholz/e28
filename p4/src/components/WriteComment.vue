@@ -1,72 +1,125 @@
 <template>
-<form id='newComment' @submit='checkForm' action='https://e28-p4-5044d.firebaseio.com/comments.json' method='put'>
-  <p v-if="errors.length">
-    <b>Please correct the following error(s):</b>
-    <ul>
-      <li v-for="error in errors" :key='error'>{{ error }}</li>
-    </ul>
-  </p>
+  <div id='new-comment'>
+    <h1>Comment on this Post</h1>
+    <form @submit.prevent='handleSubmit'>
+      <div class='form-group'>
+        <label for='name'>Your Name</label>
+        <input
+          type='text'
+          :class='{ "form-input-error": $v.blogComment.name.$error }'
+          id='name'
+          data-test='comment-name-input'
+          v-model='$v.blogComment.name.$model'
+        />
 
-  <p>
-    <label for="name">Name</label>
-    <input
-      id="name"
-      v-model="name"
-      type="text"
-      name="commenter"
-    >
-  </p>
-  <p>
-    <label for="comment">Comment</label>
-    <input
-      id="comment"
-      v-model="comment"
-      type="text"
-      name="body"
-    >
-  </p>
+        <div v-if='$v.blogComment.name.$error'>
+          <div
+            class='form-feedback-error'
+            v-if='!$v.blogComment.name.required'
+          >You must provide your name.</div>
+          <div
+            class='form-feedback-error'
+            v-else-if='!$v.blogComment.name.minLength'
+          >Your name must be at least 3 characters long.</div>
+        </div>
 
-  <input type='hidden' name='date' :value='currentDate'>
-  <input type='hidden' name='postId' :value='this.$route.path.replace("/posts/", "")'>
+        <small class='form-help'>Min: 3</small>
+      </div>
 
-  <p>
-    <input
-      type="submit"
-      value="Submit"
-    >
-  </p>
+      <div class='form-group'>
+        <label for='comment'>Comment</label>
+        <input
+          type='text'
+          :class='{ "form-input-error": $v.blogComment.comment.$error }'
+          data-test='comment-comment-input'
+          id='comment'
+          v-model='$v.blogComment.comment.$model'
+        />
+        <div v-if='$v.blogComment.comment.$error'>
+          <div
+            class='form-feedback-error'
+            v-if='!$v.blogComment.comment.required'
+          >A comment is required.</div>
+          <div
+            class='form-feedback-error'
+            v-else-if='!$v.blogComment.comment.minLength'
+          >Your comment must be at least 10 characters long.</div>
+        </div>
+        <input
+          type='hidden'
+          name='postId'
+          id='postId'
+          :value='this.$route.path.replace("/posts/", "")'
+        />
+      </div>
 
-</form>
+      <button data-test='new-comment-button' type='submit'>Submit Comment</button>
+
+      <div class='form-feedback-error' v-if='formHasErrors'>Please correct the above errors</div>
+    </form>
+  </div>
 </template>
 
 <script>
+import * as app from './../app.js';
+import { required, minLength } from 'vuelidate/lib/validators';
+
+let blogComment = {};
+
+// If in dev mode, pre-fill the 2 input fields to make testing easier
+if (process.env.NODE_ENV == 'development') {
+  blogComment = {
+    name: 'Kevin Reinholz',
+    comment: 'What an amazing blog post!',
+    date: JSON.stringify(new Date().toJSON()),
+    postId: this.postId
+  };
+} else {
+  blogComment = {
+    name: '',
+    comment: '',
+    date: JSON.stringify(new Date().toJSON()),
+    postId: this.postId
+  };
+}
 
 export default {
   name: 'WriteComment',
   data: function() {
     return {
-      errors: [],
-      name: null,
-      comment: null,
-      currentDate: new Date(),
+      blogComment: blogComment,
+      formHasErrors: false
     };
   },
+  validations: {
+    blogComment: {
+      name: {
+        required,
+        minLength: minLength(3)
+      },
+      comment: {
+        required,
+        minLength: minLength(10)
+      }
+    }
+  },
+  watch: {
+    '$v.$anyError': function() {
+      this.formHasErrors = this.$v.$anyError;
+    }
+  },
   methods: {
-    checkForm: function (evt) {
-      if (this.name && this.comment) {
-        return true;
+    handleSubmit: function() {
+      if (!this.formHasErrors) {
+        // Axios request to the server to save the new comment to Firebase
+        app.axios
+          .post(app.config.api + 'comments.json', this.blogComment)
+          // Refresh comments received from Firebase to the Vuex store
+          .then(response => {
+            console.log(response);
+            this.$store.dispatch('setComments');
+          });
       }
-
-      this.errors = [];
-
-      if (!this.name) {
-        this.errors.push('Name required.');
-      }
-      if (!this.comment) {
-        this.errors.push('Comment required.');
-      }
-
-      evt.preventDefault();
     }
   }
 };
