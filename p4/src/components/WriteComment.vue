@@ -3,23 +3,23 @@
     <h1>Comment on this Post</h1>
     <form @submit.prevent='handleSubmit'>
       <div class='form-group'>
-        <label for='name'>Your Name</label>
+        <label for='commenter'>Your Name</label>
         <input
           type='text'
-          :class='{ "form-input-error": $v.blogComment.name.$error }'
-          id='name'
-          data-test='comment-name-input'
-          v-model='$v.blogComment.name.$model'
+          :class='{ "form-input-error": $v.blogComment.commenter.$error }'
+          id='commenter'
+          data-test='comment-commenter-input'
+          v-model='$v.blogComment.commenter.$model'
         />
 
-        <div v-if='$v.blogComment.name.$error'>
+        <div v-if='$v.blogComment.commenter.$error'>
           <div
             class='form-feedback-error'
-            v-if='!$v.blogComment.name.required'
+            v-if='!$v.blogComment.commenter.required'
           >You must provide your name.</div>
           <div
             class='form-feedback-error'
-            v-else-if='!$v.blogComment.name.minLength'
+            v-else-if='!$v.blogComment.commenter.minLength'
           >Your name must be at least 3 characters long.</div>
         </div>
 
@@ -27,22 +27,22 @@
       </div>
 
       <div class='form-group'>
-        <label for='comment'>Comment</label>
+        <label for='body'>Comment</label>
         <textarea
           type='text'
-          :class='{ "form-input-error": $v.blogComment.comment.$error }'
-          data-test='comment-comment-input'
-          id='comment'
-          v-model='$v.blogComment.comment.$model'
+          :class='{ "form-input-error": $v.blogComment.body.$error }'
+          data-test='comment-body-input'
+          id='body'
+          v-model='$v.blogComment.body.$model'
         />
-        <div v-if='$v.blogComment.comment.$error'>
+        <div v-if='$v.blogComment.body.$error'>
           <div
             class='form-feedback-error'
-            v-if='!$v.blogComment.comment.required'
+            v-if='!$v.blogComment.body.required'
           >A comment is required.</div>
           <div
             class='form-feedback-error'
-            v-else-if='!$v.blogComment.comment.minLength'
+            v-else-if='!$v.blogComment.body.minLength'
           >Your comment must be at least 10 characters long.</div>
         </div>
         <small class='form-help'>Min: 10</small>
@@ -64,18 +64,23 @@ export default {
   props: ['postId'],
   data: function() {
     return {
-      blogComment: {},
+      blogComment: {
+        commenter: '',
+        body: '',
+        date: null,
+        postId: null
+      },
       formHasErrors: false,
       blogPostId: this.postId
     };
   },
   validations: {
     blogComment: {
-      name: {
+      commenter: {
         required,
         minLength: minLength(3)
       },
-      comment: {
+      body: {
         required,
         minLength: minLength(10)
       }
@@ -89,6 +94,9 @@ export default {
   methods: {
     handleSubmit: function() {
       if (!this.formHasErrors) {
+        // Update the date and postId fields within the new comment object
+        this.blogComment.date = new Date();
+        this.blogComment.postId = this.blogPostId;
         // Axios request to the server to save the new comment to Firebase
         app.axios
           .post(app.config.api + 'comments.json', this.blogComment)
@@ -96,25 +104,9 @@ export default {
           .then(response => {
             console.log(response);
             this.$store.dispatch('setComments');
+            this.blogComment = {};
+            this.formHasErrors = false;
           });
-      }
-    },
-    mounted: function() {
-      // If in dev mode, pre-fill the 2 input fields to make testing easier
-      if (process.env.NODE_ENV == 'development') {
-        this.blogComment = {
-          name: 'Kevin Reinholz',
-          comment: 'What an amazing blog post!',
-          date: JSON.stringify(new Date()),
-          postId: this.blogPostId
-        };
-      } else {
-        this.blogComment = {
-          name: '',
-          comment: '',
-          date: JSON.stringify(new Date()),
-          postId: this.blogPostId
-        };
       }
     }
   }
