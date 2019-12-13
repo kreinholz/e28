@@ -28,7 +28,7 @@
 
       <div class='form-group'>
         <label for='comment'>Comment</label>
-        <input
+        <textarea
           type='text'
           :class='{ "form-input-error": $v.blogComment.comment.$error }'
           data-test='comment-comment-input'
@@ -45,6 +45,7 @@
             v-else-if='!$v.blogComment.comment.minLength'
           >Your comment must be at least 10 characters long.</div>
         </div>
+        <small class='form-help'>Min: 10</small>
       </div>
 
       <button data-test='new-comment-button' type='submit'>Submit Comment</button>
@@ -63,7 +64,7 @@ export default {
   props: ['postId'],
   data: function() {
     return {
-      blogComment: null,
+      blogComment: {},
       formHasErrors: false,
       blogPostId: this.postId
     };

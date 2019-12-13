@@ -9,7 +9,7 @@ export default new Vuex.Store({
     state: {
         favoritesCount: 0,
         posts: [],
-        comments: [],
+        comments: {},
     },
     mutations: {
         setFavoritesCount(state, payload) {

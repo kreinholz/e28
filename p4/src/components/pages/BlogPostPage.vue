@@ -46,7 +46,7 @@
     <p></p>
     <div>
       <h2>Comments</h2>
-      <div v-for='comment in comments' :key='comment.id' :comment='comment'>
+      <div v-for='comment in comments' :key='comment.date' :comment='comment'>
         <div v-if='comment.postId == post.id'>
           <p
             class='comment'
