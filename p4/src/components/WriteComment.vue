@@ -58,31 +58,12 @@
 import * as app from './../app.js';
 import { required, minLength } from 'vuelidate/lib/validators';
 
-let blogComment = {};
-
-// If in dev mode, pre-fill the 2 input fields to make testing easier
-if (process.env.NODE_ENV == 'development') {
-  blogComment = {
-    name: 'Kevin Reinholz',
-    comment: 'What an amazing blog post!',
-    date: JSON.stringify(new Date()),
-    postId: this.blogPostId
-  };
-} else {
-  blogComment = {
-    name: '',
-    comment: '',
-    date: JSON.stringify(new Date()),
-    postId: this.blogPostId
-  };
-}
-
 export default {
   name: 'WriteComment',
   props: ['postId'],
   data: function() {
     return {
-      blogComment: blogComment,
+      blogComment: null,
       formHasErrors: false,
       blogPostId: this.postId
     };
@@ -115,6 +96,24 @@ export default {
             console.log(response);
             this.$store.dispatch('setComments');
           });
+      }
+    },
+    mounted: function() {
+      // If in dev mode, pre-fill the 2 input fields to make testing easier
+      if (process.env.NODE_ENV == 'development') {
+        this.blogComment = {
+          name: 'Kevin Reinholz',
+          comment: 'What an amazing blog post!',
+          date: JSON.stringify(new Date()),
+          postId: this.blogPostId
+        };
+      } else {
+        this.blogComment = {
+          name: '',
+          comment: '',
+          date: JSON.stringify(new Date()),
+          postId: this.blogPostId
+        };
       }
     }
   }
