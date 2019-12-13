@@ -65,15 +65,15 @@ if (process.env.NODE_ENV == 'development') {
   blogComment = {
     name: 'Kevin Reinholz',
     comment: 'What an amazing blog post!',
-    date: JSON.stringify(new Date().toJSON()),
-    postId: this.postId
+    date: JSON.stringify(new Date()),
+    postId: this.blogPostId
   };
 } else {
   blogComment = {
     name: '',
     comment: '',
-    date: JSON.stringify(new Date().toJSON()),
-    postId: this.postId
+    date: JSON.stringify(new Date()),
+    postId: this.blogPostId
   };
 }
 
@@ -83,7 +83,8 @@ export default {
   data: function() {
     return {
       blogComment: blogComment,
-      formHasErrors: false
+      formHasErrors: false,
+      blogPostId: this.postId
     };
   },
   validations: {
