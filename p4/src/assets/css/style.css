@@ -418,6 +418,10 @@ nav ul li a.router-link-active:active,nav ul li a.router-link-active:hover,nav u
 {
     text-align:left;
     color:white;
+    margin:auto;
+    margin-bottom:20px;
+    border:1px solid #000;
+    padding:20px;
 }
 
 #posts .post .post-name

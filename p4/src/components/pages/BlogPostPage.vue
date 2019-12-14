@@ -48,10 +48,10 @@
       <h2>Comments</h2>
       <div v-for='comment in comments' :key='comment.date' :comment='comment'>
         <div v-if='comment.postId == post.id'>
-          <p
-            class='comment'
-          >On {{ comment.date | moment('dddd, MMMM Do, YYYY, h:mm a') }}, {{ comment.commenter }} said:</p>
-          <p class='comment'>{{ comment.body }}</p>
+          <div class='comment'>
+            <p>On {{ comment.date | moment('dddd, MMMM Do, YYYY, h:mm a') }}, {{ comment.commenter }} said:</p>
+            <p>{{ comment.body }}</p>
+          </div>
         </div>
       </div>
     </div>
