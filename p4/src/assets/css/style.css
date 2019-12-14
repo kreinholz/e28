@@ -473,10 +473,23 @@ nav ul li a.router-link-active:active,nav ul li a.router-link-active:hover,nav u
 
 table {
     border-collapse: collapse;
+    margin:5px;
 }
   
 table, th, td {
     border: 1px solid white;
+    padding:3px;
+}
+
+.social {
+    color: yellow;
+}
+
+.social:hover {
+    background-color:#0074d9;
+    color:#fff;
+    text-decoration:none;
+    cursor:pointer;
 }
 
 /*----------------------------------------------------

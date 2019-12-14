@@ -20,26 +20,26 @@
       <div class='alert' v-if='addAlert'>Post has been saved to Favorites</div>
     </transition>
     <p></p>
-    <p>Share on Social Media</p>
+    <p>Share on Social Media:</p>
     <social-sharing :url='this.$router.fullPath' inline-template>
       <div>
         <network network='facebook'>
-          <i class='fa fa-fw fa-facebook'></i> Facebook
+          <span class='social'><i class='fa fa-fw fa-facebook'></i> Facebook</span>
         </network>
         <network network='linkedin'>
-          <i class='fa fa-fw fa-linkedin'></i> LinkedIn
+          <span class='social'><i class='fa fa-fw fa-linkedin'></i> LinkedIn</span>
         </network>
         <network network='pinterest'>
-          <i class='fa fa-fw fa-pinterest'></i> Pinterest
+          <span class='social'><i class='fa fa-fw fa-pinterest'></i> Pinterest</span>
         </network>
         <network network='reddit'>
-          <i class='fa fa-fw fa-reddit'></i> Reddit
+          <span class='social'><i class='fa fa-fw fa-reddit'></i> Reddit</span>
         </network>
         <network network='twitter'>
-          <i class='fa fa-fw fa-twitter'></i> Twitter
+          <span class='social'><i class='fa fa-fw fa-twitter'></i> Twitter</span>
         </network>
         <network network='whatsapp'>
-          <i class='fa fa-fw fa-whatsapp'></i> Whatsapp
+          <span class='social'><i class='fa fa-fw fa-whatsapp'></i> Whatsapp</span>
         </network>
       </div>
     </social-sharing>
