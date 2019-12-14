@@ -20,6 +20,6 @@ describe('ShowBlogPost.vue', () => {
         RouterLink: RouterLinkStub
       }
     })
-    expect(wrapper.text()).to.include(post.title);
+    expect(wrapper.text()).to.include(post.title)
   })
 })

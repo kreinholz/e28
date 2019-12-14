@@ -24,22 +24,40 @@
     <social-sharing :url='this.$router.fullPath' inline-template>
       <div>
         <network network='facebook'>
-          <span class='social'><i class='fa fa-fw fa-facebook'></i> Facebook</span>
+          <span class='social'>
+            <img class='smicon' src='../../assets/images/facebook.png' alt='Facebook logo' />
+            <i class='fa fa-fw fa-facebook'></i> Facebook
+          </span>
         </network>
         <network network='linkedin'>
-          <span class='social'><i class='fa fa-fw fa-linkedin'></i> LinkedIn</span>
+          <span class='social'>
+            <img class='smicon' src='../../assets/images/linkedin.png' alt='LinkedIn logo' />
+            <i class='fa fa-fw fa-linkedin'></i> LinkedIn
+          </span>
         </network>
         <network network='pinterest'>
-          <span class='social'><i class='fa fa-fw fa-pinterest'></i> Pinterest</span>
+          <span class='social'>
+            <img class='smicon' src='../../assets/images/pinterest.jpg' alt='Pinterest logo' />
+            <i class='fa fa-fw fa-pinterest'></i> Pinterest
+          </span>
         </network>
         <network network='reddit'>
-          <span class='social'><i class='fa fa-fw fa-reddit'></i> Reddit</span>
+          <span class='social'>
+            <img class='smicon' src='../../assets/images/reddit.png' alt='Reddit logo' />
+            <i class='fa fa-fw fa-reddit'></i> Reddit
+          </span>
         </network>
         <network network='twitter'>
-          <span class='social'><i class='fa fa-fw fa-twitter'></i> Twitter</span>
+          <span class='social'>
+            <img class='smicon' src='../../assets/images/twitter.png' alt='Twitter logo' />
+            <i class='fa fa-fw fa-twitter'></i> Twitter
+          </span>
         </network>
         <network network='whatsapp'>
-          <span class='social'><i class='fa fa-fw fa-whatsapp'></i> Whatsapp</span>
+          <span class='social'>
+            <img class='smicon' src='../../assets/images/whatsapp.png' alt='WhatsApp logo' />
+            <i class='fa fa-fw fa-whatsapp'></i> Whatsapp
+          </span>
         </network>
       </div>
     </social-sharing>

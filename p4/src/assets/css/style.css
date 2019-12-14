@@ -492,6 +492,11 @@ table, th, td {
     cursor:pointer;
 }
 
+.smicon {
+    max-width:30px;
+    height:auto;
+}
+
 /*----------------------------------------------------
 Forms - taken from zipfoods
 -----------------------------------------------------*/
