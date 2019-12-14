@@ -570,3 +570,8 @@ button {
 button:hover {
     background-color: yellowgreen;
 }
+
+.blogimage {
+    max-width:50%;
+    height:auto;
+}

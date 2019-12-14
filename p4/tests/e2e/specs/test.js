@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('My First Test', () => {
+describe('Cypress e2e testing of p4', () => {
   it('Visits the home page', () => {
     cy.visit('/')
     cy.get('#logo').should('exist')
@@ -26,6 +26,7 @@ describe('My First Test', () => {
     body: "This chat app would've been so much easier with a Vue.js, React, or Angular front-end instead of vanilla JavaScript!"
   }
 
+  // Visit the blog posts page and check to ensure all posts are displaying as expected
   it('Shows all blog posts', () => {
     cy.visit('/posts')
 
@@ -41,6 +42,87 @@ describe('My First Test', () => {
     cy.contains('h1', post.title)
   })
 
-  // Add more e2e tests such as checking for the existence of a comment, clicking the Add to Favorites button, and submitting a comment
+  // Visit an individual blog post page and check that it loads as expected
+  it('Shows an individual blog post', () => {
+    cy.visit('/posts/' + post.id)
+
+    cy.contains('h1', post.title)
+
+    cy.get('img').should('exist')
+  })
+
+  // Test save to favorites functionality
+  it('Favorites the current post', () => {
+    cy.get('[id="add-to-favorites"]').click()
+    cy.get('[id="favorited-alert"]').should('exist')
+  })
+
+  // Test SocialSharing third party module loading
+  // Note - https://docs.cypress.io/guides/references/trade-offs.html#Multiple-tabs explains why it is not feasible to open/test a pop-up
+  it('Tests loading of sharing links via 3rd-party SocialSharing module', () => {
+    cy.get('[id="twitter-share"]').should('exist')
+  })
+
+  // Test display of comments (for a blog post we know to have a specific comment)
+  it('Displays comments associated with the current blog post', () => {
+    cy.contains(comment.commenter)
+    cy.contains(comment.body)
+  })
+
+  // Test leaving a new comment on a blog post
+  it('Tests leaving a new comment', () => {
+    // Test comment that meets criteria
+    let testGoodComment = {
+      commenter: 'Cypress',
+      body: 'This is a test comment left by Cypress during e2e testing'
+    }
+    // Test comment that doesn't meet criteria
+    let testBadComment = {
+      commenter: 'A',
+      body: 'B'
+    }
+
+    // Try leaving a comment that fails validation
+    cy.get('[id="commenter"]').type(testBadComment.commenter)
+    cy.get('[id="body"]').type(testBadComment.body)
+    cy.get('[data-test="new-comment-button"]').click()
+    cy.contains('Your name must be at least 3 characters long.')
+    cy.contains('Your comment must be at least 10 characters long.')
+
+    // Clear the bad comment - see https://docs.cypress.io/api/commands/clear.html#Syntax
+    cy.get('[id="commenter"]').clear()
+    cy.get('[id="body"]').clear()
+
+    // Try leaving a comment that passes validation
+    cy.get('[id="commenter"]').type(testGoodComment.commenter)
+    cy.get('[id="body"]').type(testGoodComment.body)
+    cy.get('[data-test="new-comment-button"]').click()
+    cy.contains('Cypress')
+    cy.contains('This is a test comment left by Cypress during e2e testing')
+  })
+
+  // Test categories page/functionality
+  it('Shows the different blog categories', () => {
+    cy.visit('/categories')
+    cy.contains('h2', 'Categories')
+    cy.contains('aspirations').click()
+    cy.contains('Updated course schedule')
+    cy.contains('writing').click()
+    cy.contains('Summer Plans')
+  })
+
+  // Test the Favorites page/functionality
+  it('Favorites a blog post, then removes it', () => {
+    cy.visit('/posts/' + post.id)
+    cy.get('[id="add-to-favorites"]').click()
+
+    // Go to Favorites page to confirm favorited post is listed
+    cy.visit('/favorites')
+    cy.contains(post.title)
+
+    // Remove the favorited post
+    cy.contains('Remove').click()
+    cy.contains('No Favorites')
+  })
 
 })

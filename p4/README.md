@@ -3,7 +3,10 @@
 + Production URL: <http://p4.kreinholz.me>
 
 ## Improvements based on P3 peer review feedback
-*Provide a summary of improvements made based on P3 peer review feedback; if there was no actionable feedback, leave this blank.*
++ Added social media logos/icons to SocialSharing links, and also improved CSS styling so they look like clickable links
++ Improved the behavior of Categories to make the selected category appear different and hopefully make the overall interface clearer to the user
++ Comments are now active, and users have the ability to create/post new comments :)
++ Shrunk blog post images so they're not so huge :)
 
 ## Outside resources
 + CSS styling derived from https://templated.co/privy and zipfoods e28 course scss file, modified for this app's purposes
@@ -11,7 +14,9 @@
 + vue-social-share npm module for sharing blog posts to social media
 + vue-moment to incorporate Moment.js date filters
 + emoji-mart-vue npm module for providing an emoji picker to non-mobile users of the app when creating new blog comments
-+ vue-authenticate to allow user login via popular social media providers, in order to attribute blog comments to a particular user
 
 ## Notes for instructor
-*Any notes for me to refer to while grading; if none, omit this section.*
++ I'm far less dissatisfied with p4 than I was with p3! I did have to cut out vue-authenticate, which was rather disappointing, as I wanted only OAuth authenticated users to be able to leave blog post comments, and have their social media usernames and icons displayed in their comment boxes. However, I decided not to attempt to implement this functionality due to security concerns with hosting the entire source code of my app on Github and hosting a 100% client-side app on Netlify per p4's requirements
++ In a similar vein, I would have liked to have worked with Firebase's authentication system to "lock down" my app more in terms of public access to both blog posts and comments, but since I have no server on which to "hide" sensitive login credentials/keys, this wasn't really feasible
++ Again, if I had server-side logic, I would have liked to have incorporated rich text editing and the ability to create new blog posts. However, due to the public/insecure nature of the app, I decided not to pursue this
++ As the above hopefully makes clear, I started with a laundry list of "nice to haves" but opted to whittle the scope of p4 down to something that's hopefully (a) quality work, and (b) not a security risk (beyond blog posts and comments on Firebase being accessible to the public)

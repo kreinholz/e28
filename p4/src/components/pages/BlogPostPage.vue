@@ -10,14 +10,15 @@
       <img
         :alt='"Blog Post Image for  " + post.title'
         :src='require("../../assets/images/" + post.image)'
+        class='blogimage'
       />
     </div>
     <p class='description' v-html='post.content'></p>
 
-    <button @click='addToFavorites(post.id)'>Add to Favorites</button>
+    <button id='add-to-favorites' @click='addToFavorites(post.id)'>Add to Favorites</button>
 
     <transition name='fade'>
-      <div class='alert' v-if='addAlert'>Post has been saved to Favorites</div>
+      <div id='favorited-alert' class='alert' v-if='addAlert'>Post has been saved to Favorites</div>
     </transition>
     <p></p>
     <p>Share on Social Media:</p>
@@ -47,7 +48,7 @@
             <i class='fa fa-fw fa-reddit'></i> Reddit
           </span>
         </network>
-        <network network='twitter'>
+        <network network='twitter' id='twitter-share'>
           <span class='social'>
             <img class='smicon' src='../../assets/images/twitter.png' alt='Twitter logo' />
             <i class='fa fa-fw fa-twitter'></i> Twitter
