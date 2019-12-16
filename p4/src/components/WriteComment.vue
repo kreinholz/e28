@@ -104,8 +104,9 @@ export default {
           .then(response => {
             console.log(response);
             this.$store.dispatch('setComments');
+            // clear form inputs and reset vuelidate error state - see <https://github.com/vuelidate/issues/132>
             this.blogComment = {};
-            this.formHasErrors = false;
+            this.$v.$reset();
           });
       }
     }
